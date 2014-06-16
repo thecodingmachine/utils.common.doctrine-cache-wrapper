@@ -37,6 +37,9 @@ if (DEBUG) {
 $driver->setNamespace(SECRET);
 return $driver;
 ');
+		
+		$cacheWrapperInstance = InstallUtils::getOrCreateInstance('doctrineMoufCache', null, $moufManager);
+		$cacheWrapperInstance->getConstructorArgumentProperty('doctrineCache')->setValue($cacheInstance);
 
 		// Let's rewrite the MoufComponents.php file to save the component
 		$moufManager->rewriteMouf();
