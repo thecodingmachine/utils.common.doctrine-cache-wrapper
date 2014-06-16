@@ -25,7 +25,7 @@ class CacheInstaller implements PackageInstallerInterface {
 		$cacheInstance = InstallUtils::getOrCreateInstance('defaultDoctrineCache', null, $moufManager);
 		$cacheInstance->setCode('// If DEBUG mode is on, let\'s just use an ArrayCache.
 if (DEBUG) {
-	$driver = new Doctrine\\Common\\Cache\\ArrayCache());
+	$driver = new Doctrine\\Common\\Cache\\ArrayCache();
 } else {
 	// If APC is available, let\'s use APC
 	if (extension_loaded("apc")) {
@@ -38,7 +38,7 @@ $driver->setNamespace(SECRET);
 return $driver;
 ');
 		
-		$cacheWrapperInstance = InstallUtils::getOrCreateInstance('doctrineMoufCache', null, $moufManager);
+		$cacheWrapperInstance = InstallUtils::getOrCreateInstance('doctrineMoufCache', 'Mouf\\Utils\\Common\\Doctrine\\Cache\\DoctrineCacheAdapter', $moufManager);
 		$cacheWrapperInstance->getConstructorArgumentProperty('doctrineCache')->setValue($cacheInstance);
 
 		// Let's rewrite the MoufComponents.php file to save the component
