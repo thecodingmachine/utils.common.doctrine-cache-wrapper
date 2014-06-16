@@ -17,6 +17,17 @@ By default, it is configured as the following:
   after each request.
 - If debug mode is false, a `APCCache`. If APC is not installed, we fallback to a `FileCache`.
 
+The package also creates a `doctrineMoufCache` instance that is a wrapper around the `defaultDoctrineCache`
+that provides compatibility with the Mouf cache system.
+
+The wrapper
+-----------
+
+This package contains the `DoctrineCacheAdapter` class. This class can be used to transform any instance of a
+Doctrine cache into a cache that is compatible with Mouf.
+
+This is very convenient, especially because any Mouf cache can be purged using the red "Purge button" in the Mouf UI.
+
 Installation
 ------------
 

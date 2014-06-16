@@ -5,7 +5,7 @@
  * See the file LICENSE.txt for copying permission.
  */
 
-namespace Mouf\Utils\Common\Doctrine\Annotations;
+namespace Mouf\Utils\Common\Doctrine\Cache;
 
 use Mouf\Installer\PackageInstallerInterface;
 use Mouf\MoufManager;
