@@ -25,13 +25,13 @@ class CacheInstaller implements PackageInstallerInterface {
 		$cacheInstance = InstallUtils::getOrCreateInstance('defaultDoctrineCache', null, $moufManager);
 		$cacheInstance->setCode('// If DEBUG mode is on, let\'s just use an ArrayCache.
 if (DEBUG) {
-	$driver = new Doctrine\\Common\\Cache\\ArrayCache();
+	$driver = new \\Doctrine\\Common\\Cache\\ArrayCache();
 } else {
 	// If APC is available, let\'s use APC
 	if (extension_loaded("apc")) {
-		$driver = new Doctrine\\Common\\Cache\\ApcCache();
+		$driver = new \\Doctrine\\Common\\Cache\\ApcCache();
 	} else {
-		$driver = new Doctrine\\Common\\Cache\\FileCache(sys_get_temp_dir().\'/doctrinecache\');
+		$driver = new \\Doctrine\\Common\\Cache\\FileCache(sys_get_temp_dir().\'/doctrinecache\');
 	}
 }
 $driver->setNamespace(SECRET);
