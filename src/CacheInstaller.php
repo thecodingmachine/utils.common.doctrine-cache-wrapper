@@ -33,7 +33,7 @@ if (DEBUG) {
 	} else if (extension_loaded("apc")) {
 		$driver = new \\Doctrine\\Common\\Cache\\ApcCache();
 	} else {
-		$driver = new \\Doctrine\\Common\\Cache\\FileCache(sys_get_temp_dir().\'/doctrinecache\');
+		$driver = new \\Doctrine\\Common\\Cache\\PhpFileCache(sys_get_temp_dir().\'/doctrinecache\');
 	}
 }
 $driver->setNamespace(SECRET);
