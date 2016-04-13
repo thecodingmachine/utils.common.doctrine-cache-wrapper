@@ -28,7 +28,9 @@ if (DEBUG) {
 	$driver = new \\Doctrine\\Common\\Cache\\ArrayCache();
 } else {
 	// If APC is available, let\'s use APC
-	if (extension_loaded("apc")) {
+	if (extension_loaded("apcu")) {
+		$driver = new \\Doctrine\\Common\\Cache\\ApcuCache();
+	} else if (extension_loaded("apc")) {
 		$driver = new \\Doctrine\\Common\\Cache\\ApcCache();
 	} else {
 		$driver = new \\Doctrine\\Common\\Cache\\FileCache(sys_get_temp_dir().\'/doctrinecache\');
